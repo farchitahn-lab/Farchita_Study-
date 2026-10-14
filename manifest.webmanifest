@@ -1,0 +1,17 @@
+{
+  "id": "./",
+  "name": "مساحتي الدراسية",
+  "short_name": "مساحتي الدراسية",
+  "description": "دفتر متابعة دراسية يعمل دون إنترنت بعد أول زيارة.",
+  "lang": "ar",
+  "dir": "rtl",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#fbf7f3",
+  "theme_color": "#f7f1eb",
+  "icons": [
+    {"src": "icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any maskable"},
+    {"src": "icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any maskable"}
+  ]
+}

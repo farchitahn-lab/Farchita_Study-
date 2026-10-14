@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#f7f1eb">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="icon-192.png" type="image/png">
+<title>مساحتي الدراسية</title>
+<style>
+:root{color-scheme:light dark;--bg:light-dark(#fbf7f3,#171615);--card:light-dark(#fff,#242220);--text:light-dark(#2c2624,#f5efea);--muted:light-dark(#786f6a,#bdb2aa);--line:light-dark(#e8ded6,#403a36);--accent:light-dark(#9b6a76,#e4aab7);--soft:light-dark(#f3e8e7,#382b30)}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--text);font-family:system-ui,-apple-system,"Segoe UI",sans-serif;line-height:1.6}.app{max-width:760px;margin:auto;padding:20px 15px 40px}.hero{background:var(--soft);border:1px solid var(--line);border-radius:22px;padding:20px;margin-bottom:14px}.eyebrow{font-size:.85rem;color:var(--muted)}h1{font-size:1.55rem;margin:4px 0}h2{font-size:1.05rem;margin:0 0 10px}.target{display:flex;justify-content:space-between;align-items:end;margin-top:15px}.score{font-size:1.8rem;font-weight:800}.card{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:16px;margin:12px 0}.muted{color:var(--muted);font-size:.9rem}.days{display:grid;grid-template-columns:repeat(4,1fr);gap:7px}.days button{padding:9px 3px}.daybtn,button,select,input,textarea{font:inherit}button{cursor:pointer;border:1px solid var(--line);background:var(--card);color:var(--text);border-radius:11px;padding:10px 12px}.daybtn.active,.primary{background:var(--accent);color:#24191c;border-color:transparent;font-weight:700}.progress{height:9px;background:var(--line);border-radius:99px;overflow:hidden;margin:8px 0}.bar{height:100%;width:0;background:var(--accent);transition:width .2s}.task{display:flex;gap:10px;align-items:flex-start;padding:10px 0;border-bottom:1px solid var(--line)}.task:last-child{border-bottom:0}.task input{width:20px;height:20px;margin-top:4px;accent-color:var(--accent);flex-shrink:0}.task.done span{text-decoration:line-through;color:var(--muted)}.task span{flex:1}.task .remove{padding:2px 8px;color:var(--muted)}.formrow{display:flex;gap:8px;flex-wrap:wrap}.formrow input,.formrow select{flex:1;min-width:130px}input,select,textarea{background:var(--bg);border:1px solid var(--line);border-radius:10px;padding:10px;color:var(--text);width:100%}textarea{resize:vertical}.actions{display:flex;gap:8px;flex-wrap:wrap}.actions button{flex:1}.small{font-size:.82rem}.foot{margin-top:16px;text-align:center;color:var(--muted);font-size:.82rem}label{display:block;margin-bottom:7px}.notice{padding:10px 12px;background:var(--bg);border-radius:12px;font-size:.9rem}.hidden{display:none!important}
+</style>
+</head>
+<body><main class="app">
+<header class="hero"><div class="eyebrow">دفتر المتابعة الشخصي · السنة الثانية ثانوي · شعبة رياضيات</div><h1>مساحتي الدراسية 🌷</h1><div class="muted">خطوة صغيرة كل يوم أفضل من السعي للكمال.</div><div class="target"><div><div class="muted">هدفي</div><div class="score">16+/20</div></div><div style="text-align:left"><div class="muted">إنجاز اليوم</div><strong id="count">0 / 0</strong></div></div><div class="progress"><div class="bar" id="bar"></div></div><div class="muted" id="percent">0% مكتمل</div></header>
+<section class="card"><h2>📅 اختاري اليوم</h2><div class="days" id="days"></div><p class="muted">تُحفظ علامات كل يوم على هذا الهاتف في المتصفح، حتى عند إغلاق الصفحة.</p></section>
+<section class="card"><h2>☑️ قائمة المهام</h2><div id="tasklist"></div><div class="notice muted" id="empty" style="display:none">لا توجد مهام بعد. أضيفي مهامك أدناه.</div></section>
+<section class="card"><h2>＋ إضافة مهمة</h2><form id="addform"><div class="formrow"><input id="taskname" maxlength="140" required placeholder="مثال: حل التمرين الثالث"><select id="category"><option>دروس المدرسة</option><option selected>الواجبات</option><option>المواد الأساسية</option><option>مواد أخرى</option><option>نهاية اليوم</option></select><button class="primary" type="submit">إضافة</button></div></form></section>
+<section class="card"><h2>📝 ملاحظات اليوم</h2><label for="notes" class="muted">ما فهمته؟ ما الذي أؤجله؟ ما أول مهمة غدًا؟</label><textarea id="notes" rows="4" placeholder="اكتبي ملاحظاتك هنا..."></textarea><p class="muted">تُحفظ الملاحظات تلقائيًا على هذا الهاتف.</p></section>
+<section class="card"><h2>إدارة السجل</h2><div class="actions"><button id="export">تنزيل نسخة احتياطية</button><button id="reset">إعادة ضبط علامات اليوم</button></div><p class="muted small">احتفظي بنسخة احتياطية إذا أردتِ نقل السجل إلى هاتف آخر أو مسح بيانات المتصفح.</p></section>
+<div class="foot">تعمل هذه الصفحة دون إنترنت بعد حفظها على الهاتف. لا تحذفِي بيانات المتصفح إذا أردتِ الاحتفاظ بعلاماتك.</div>
+</main>
+<script>
+(()=>{
+const days=['الأحد','الإثنين','الثلاثاء','الأربعاء','الخميس','الجمعة','السبت'];
+const initial=[['دروس المدرسة','مراجعة درس اليوم'],['الواجبات','إنجاز الواجبات المستعجلة'],['المواد الأساسية','رياضيات: فهم وحل تمارين'],['المواد الأساسية','فيزياء: مراجعة أو تطبيق'],['المواد الأساسية','علوم طبيعية: مراجعة قصيرة'],['مواد أخرى','فرنسية أو حفظ'],['نهاية اليوم','تسجيل ما أنجزته وما تراكم']];
+const KEY='suheila-offline-study-v1'; let state={selected:2,records:{}};
+try{const saved=localStorage.getItem(KEY);if(saved)state={...state,...JSON.parse(saved)}}catch(e){}
+function dateKey(){return String(state.selected)}
+function ensure(){const k=dateKey();if(!state.records[k])state.records[k]={tasks:initial.map((x,i)=>({id:i+1,category:x[0],name:x[1],done:false})),notes:''};}
+function save(){try{localStorage.setItem(KEY,JSON.stringify(state))}catch(e){alert('تعذر الحفظ. صدّري نسخة احتياطية من السجل.')}}
+function current(){ensure();return state.records[dateKey()]}
+function esc(s){return String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
+function renderDays(){document.getElementById('days').innerHTML=days.map((d,i)=>`<button class="daybtn ${state.selected===i?'active':''}" data-day="${i}">${d}</button>`).join('');document.querySelectorAll('[data-day]').forEach(b=>b.addEventListener('click',()=>{state.selected=Number(b.dataset.day);ensure();save();render()}))}
+function renderTasks(){const r=current();const groups=['دروس المدرسة','الواجبات','المواد الأساسية','مواد أخرى','نهاية اليوم'];let html='';groups.forEach(g=>{const ts=r.tasks.filter(t=>t.category===g);if(!ts.length)return;html+=`<h3 style="font-size:.96rem;margin:14px 0 4px">${g}</h3>`;ts.forEach(t=>{html+=`<div class="task ${t.done?'done':''}"><input type="checkbox" data-check="${t.id}" ${t.done?'checked':''} aria-label="تم إنجاز ${esc(t.name)}"><span>${esc(t.name)}</span>${t.id>7?`<button class="remove" data-remove="${t.id}" aria-label="حذف المهمة">×</button>`:''}</div>`})});document.getElementById('tasklist').innerHTML=html;document.getElementById('empty').style.display=r.tasks.length?'none':'block';document.querySelectorAll('[data-check]').forEach(c=>c.addEventListener('change',()=>{const t=current().tasks.find(t=>t.id===Number(c.dataset.check));if(t)t.done=c.checked;save();render()}));document.querySelectorAll('[data-remove]').forEach(b=>b.addEventListener('click',()=>{current().tasks=current().tasks.filter(t=>t.id!==Number(b.dataset.remove));save();render()}));const done=r.tasks.filter(t=>t.done).length,total=r.tasks.length;document.getElementById('count').textContent=`${done} / ${total}`;document.getElementById('bar').style.width=(total?done/total*100:0)+'%';document.getElementById('percent').textContent=(total?Math.round(done/total*100):0)+'% مكتمل'}
+function render(){renderDays();renderTasks();document.getElementById('notes').value=current().notes||''}
+document.getElementById('addform').addEventListener('submit',e=>{e.preventDefault();const name=document.getElementById('taskname').value.trim();if(!name)return;const r=current();r.tasks.push({id:Math.max(7,...r.tasks.map(t=>t.id))+1,category:document.getElementById('category').value,name,done:false});document.getElementById('taskname').value='';save();render()});document.getElementById('notes').addEventListener('input',e=>{current().notes=e.target.value;save()});document.getElementById('reset').addEventListener('click',()=>{if(confirm('إعادة ضبط علامات هذا اليوم فقط؟')){current().tasks.forEach(t=>t.done=false);save();render()}});document.getElementById('export').addEventListener('click',()=>{const blob=new Blob([JSON.stringify(state,null,2)],{type:'application/json'});const url=URL.createObjectURL(blob);const a=document.createElement('a');a.href=url;a.download='suheila-study-backup.json';a.click();URL.revokeObjectURL(url)});ensure();save();render();
+})();
+
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('./sw.js').catch(err => console.warn('تعذر تفعيل العمل دون إنترنت:', err));
+  });
+}
+</script></body></html>
